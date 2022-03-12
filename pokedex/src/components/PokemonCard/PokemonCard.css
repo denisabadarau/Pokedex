@@ -1,0 +1,90 @@
+:root {
+    --white: #fff;
+    --grass-green: #78c84f;
+    --fire-red: #f08030;
+    --water-blue: #6890f0;
+    --electric-yellow: #f9d030;
+    --normal-gray: #a7a877;
+    --ghost-purple: #705998;
+    --flying-purple: #a890f0;
+    --poison-purple: #9f419f;
+  }
+
+  .pokemonCard {
+    color: var(--white);
+    align-items: center;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    width: 275px;
+  }
+  
+  .grass {
+    background-color: var(--grass-green);
+  }
+  
+  .fire {
+    background-color: var(--fire-red);
+  }
+  
+  .water {
+    background-color: var(--water-blue);
+  }
+  
+  .electric {
+    background-color: var(--electric-yellow);
+  }
+  
+  .ghost {
+    background-color: var(--ghost-purple);
+  }
+  
+  .flying {
+    background-color: var(--flying-purple);
+  }
+  
+  .poison {
+    background-color: var(--poison-purple);
+  }
+  
+  .normal {
+    background-color: var(--normal-gray);
+  }
+  
+  .cardHeader {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+  }
+  
+  .cardTitle {
+    text-transform: capitalize;
+  }
+  
+  .cardBody {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+  }
+  
+  .pokemonType {
+    border-radius: 5px;
+    color: var(--white);
+    filter: brightness(.9);
+    margin-bottom: 10px;
+    text-align: center;
+    width: 80px;
+  }
+  
+  .pokemonTypeTitle {
+    text-transform: capitalize;
+  }
+  
+  .pokemonImage img {
+    height: 130px;
+    width: 130px;
+  }
