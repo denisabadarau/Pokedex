@@ -5,6 +5,7 @@ import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Data from '../../data/data.json';
 import './Home.css';
+import Layout from "../../components/Layout/Layout";
 
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -25,23 +26,16 @@ export default function Home() {
     ));
 
     return (
-        <div className="Home">
-            <div className="homeContainer">
-                <div className="homeHeader">
-                    <h1>Pokedex</h1>
-                    <SearchBar
-                        placeholder="Search pokemon name..."
-                        handleChange={(event) => {
-                            setSearchTerm(event.target.value);
-                        }}
-                    />
-                </div>
-                <div className="pokedexContainer">
-                    <Grid container>
-                        {renderPokemonCard}
-                    </Grid>
-                </div>
-            </div>
-        </div>
+        <Layout>
+            <SearchBar
+                placeholder="Search pokemon name..."
+                handleChange={(event) => {
+                    setSearchTerm(event.target.value);
+                }}
+            />
+            <Grid container>
+                {renderPokemonCard}
+            </Grid>
+        </Layout>
     );
 }

@@ -1,10 +1,14 @@
 import React from "react";
+import Layout from "../../components/Layout/Layout";
+import { useParams } from 'react-router-dom';
+
+
 
 export default function Pokemon() {
-    console.log('pokemon');
+    const pokemonId = useParams().pokemonId;
     return (
-        <div>
-            <h1>Pokemon</h1>
-        </div>
+        <Layout>
+            <p>{`Pokemon ${pokemonId}`}</p>
+        </Layout>
     );
 }
