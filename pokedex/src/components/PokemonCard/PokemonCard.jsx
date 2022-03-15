@@ -9,7 +9,7 @@ export default function PokemonCard({ pokemon }) {
   const renderPokemonTypes = pokemon.types.map((type) => (
     <div className={`pokemonType ${type.type.name}`}>
       <div className="pokemonTypeTitle">
-        <h3>{type.type.name}</h3>
+        <h3 key={type.slot}>{type.type.name}</h3>
       </div>
     </div>
   ));
