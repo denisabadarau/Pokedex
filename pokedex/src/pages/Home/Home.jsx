@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
 import { useState } from 'react';
-import PokemonCard from "../../components/PokemonCard/PokemonCard";
+import PokemonCard from "../../components/Cards/PokemonCard/PokemonCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Data from '../../data/data.json';
 import './Home.css';
@@ -20,7 +20,7 @@ export default function Home() {
     }).map((pokemon) => (
         <Grid item key={pokemon.id} xs={12} md={6} lg={4}>
             <a href={`/pokemon/${pokemon.id}`}>
-                <PokemonCard key={pokemon.id} pokemon={pokemon} />
+                <PokemonCard pokemon={pokemon} />
             </a>
         </Grid>
     ));

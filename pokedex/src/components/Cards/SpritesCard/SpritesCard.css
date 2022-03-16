@@ -1,0 +1,18 @@
+@import '../../../shared/types.css';
+@import '../../../shared/shared.css';
+
+.containerSpritesCard {
+    align-items: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px 0;
+    width: 1000px;
+}
+
+.containerSprite {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}

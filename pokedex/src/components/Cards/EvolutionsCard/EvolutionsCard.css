@@ -1,0 +1,33 @@
+@import '../../../shared/types.css';
+@import '../../../shared/shared.css';
+
+.containerEvolutionsCard {
+    border-radius: 10px;
+    display: flex;
+    padding: 5px 0;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    justify-content: space-around;
+}
+
+.evolutionContainer {
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 130px;
+}
+
+.evolutionContainer:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.evolutionContainer img {
+    height: 80px;
+}

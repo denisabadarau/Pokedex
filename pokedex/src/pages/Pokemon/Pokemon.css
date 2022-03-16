@@ -1,0 +1,18 @@
+.firstContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.secondContainer {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.descriptionContainer {
+    max-width: 500px;
+}

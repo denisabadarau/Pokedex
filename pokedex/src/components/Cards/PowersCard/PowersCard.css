@@ -1,0 +1,45 @@
+@import '../../../shared/types.css';
+@import '../../../shared/shared.css';
+
+.containerPowersCard {
+    align-items: flex-start;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px 0;
+    width: 100%;
+    height: 200px;
+}
+
+.powerLine {
+    color: var(--black);
+    display: grid;
+    grid-auto-columns: 190px auto 180px;
+    grid-auto-flow: column;
+    grid-template-rows: 1;
+    width: 100%;
+}
+
+.powerLineTitle {
+    grid-column-end: 1;
+    padding-left: 20px;
+}
+
+.powerLineBar {
+    align-self: center;
+    border-radius: 10px;
+    display: inline-block;
+    grid-column-end: 2;
+    grid-column-start: 1;
+    height: 8px;
+    justify-self: start;
+}
+
+.powerLineNumber {
+    align-self: center;
+    grid-column-end: 3;
+    grid-column-start: 2;
+    justify-self: end;
+    padding-right: 20px;
+}

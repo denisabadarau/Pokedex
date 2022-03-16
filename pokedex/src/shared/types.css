@@ -1,0 +1,33 @@
+@import './colors.css';
+
+.grass {
+    background-color: var(--grass-green);
+  }
+  
+  .fire {
+    background-color: var(--fire-red);
+  }
+  
+  .water {
+    background-color: var(--water-blue);
+  }
+  
+  .electric {
+    background-color: var(--electric-yellow);
+  }
+  
+  .ghost {
+    background-color: var(--ghost-purple);
+  }
+  
+  .flying {
+    background-color: var(--flying-purple);
+  }
+  
+  .poison {
+    background-color: var(--poison-purple);
+  }
+  
+  .normal {
+    background-color: var(--normal-gray);
+  }
