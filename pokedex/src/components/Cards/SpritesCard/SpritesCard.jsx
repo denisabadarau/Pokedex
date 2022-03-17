@@ -13,7 +13,7 @@ export default function SpritesCard({ pokemon }) {
     }, {})
 
     function SpriteContainer({ spriteTitle, spriteImage }) {
-        const title = String(spriteTitle).replace('_', ' ');
+        const title = String(spriteTitle).replaceAll('_', ' ');
 
         return (
             <div className="spriteContainer">
