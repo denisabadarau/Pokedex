@@ -9,9 +9,8 @@ import Layout from "../../components/Layout/Layout";
 
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
-    const pokemons = Data;
 
-    const renderPokemonCard = pokemons.filter((val) => {
+    const renderPokemonCard = Data.filter((val) => {
         if (searchTerm === "") {
             return val;
         } else if (val.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
