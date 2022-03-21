@@ -12,7 +12,7 @@ export default function SpritesCard({ pokemon }) {
         return acc;
     }, {})
 
-    function SpriteContainer({ spriteTitle, spriteImage }) {
+    const spriteContainer = (spriteTitle, spriteImage) => {
         const title = String(spriteTitle).replaceAll('_', ' ');
 
         return (
@@ -31,8 +31,7 @@ export default function SpritesCard({ pokemon }) {
     var pokemonSpritesData = [];
     for (const sprite in filterSprites) {
         if (sprite !== 'other') {
-            pokemonSpritesData.push(<SpriteContainer spriteTitle={sprite} spriteImage={filterSprites[sprite]} />)
-
+            pokemonSpritesData.push(spriteContainer(sprite, filterSprites[sprite]))
         }
     }
 

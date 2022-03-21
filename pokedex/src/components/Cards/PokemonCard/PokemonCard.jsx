@@ -6,7 +6,7 @@ export default function PokemonCard({ pokemon }) {
   const image = pokemon.sprites.other.official_artwork.front_default;
   let id = String(pokemon.id).padStart(3, '0');
 
-  const renderPokemonTypes = (type) => (
+  const renderPokemonType = (type) => (
     <div className={`pokemonType ${type.type.name}`}>
       <div className="pokemonTypeTitle">
         <h3 key={type.slot}>{type.type.name}</h3>
@@ -24,7 +24,7 @@ export default function PokemonCard({ pokemon }) {
       </div>
       <div className="cardBody">
         <div className="pokemonTypeContainer">
-          {pokemon.types.map(renderPokemonTypes)}
+          {pokemon.types.map(renderPokemonType)}
         </div>
         <div className="pokemonImage">
           <img src={image} alt="pokemon" />

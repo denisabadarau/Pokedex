@@ -14,7 +14,7 @@ export default function Pokemon() {
     const pokemonId = Number(useParams().pokemonId);
     const pokemon = Data.find(el => el.id === pokemonId);
 
-    function RenderPokemon() {
+    function renderPokemon(pokemon) {
         const pokemonType = pokemon.types[0].type.name;
         return (
             <Layout>
@@ -35,7 +35,7 @@ export default function Pokemon() {
     }
 
     return <div>
-        {pokemon && <RenderPokemon />}
+        {pokemon && renderPokemon(pokemon)}
         {!!!pokemon && <ErrorPage />}
     </div>
 }

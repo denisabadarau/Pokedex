@@ -6,7 +6,7 @@ export default function MainCard({ pokemon }) {
     let id = String(pokemon.id).padStart(3, '0');
     const pokemonType = pokemon.types[0].type.name;
 
-    const renderPokemonTypes = (type) => (
+    const renderPokemonType = (type) => (
         <div className={`type ${type.type.name}`}>
             <div className="pokemonTypeTitle">
                 {type.type.name}
@@ -24,7 +24,7 @@ export default function MainCard({ pokemon }) {
                     <h2>#{id}</h2>
                 </div>
                 <div className="types">
-                    {pokemon.types.map(renderPokemonTypes)}
+                    {pokemon.types.map(renderPokemonType)}
                 </div>
             </div>
             <div className="pokemonImageCard">
