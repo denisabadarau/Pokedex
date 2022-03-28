@@ -8,11 +8,14 @@ import PowersCard from "../../components/Cards/PowersCard/PowersCard";
 import EvolutionsCard from "../../components/Cards/EvolutionsCard/EvolutionsCard";
 import SpritesCard from "../../components/Cards/SpritesCard/SpritesCard";
 import ErrorPage from "../Error/Error";
+import usePokemonById from "../../hooks/usePokemonById";
 
 
 export default function Pokemon() {
     const pokemonId = Number(useParams().pokemonId);
-    const pokemon = Data.find(el => el.id === pokemonId);
+    const { pokemon, error, pendind } = usePokemonById(pokemonId);
+    console.log(pokemon);
+    //const pokemon = Data.find(el => el.id === pokemonId);
 
     function renderPokemon(pokemon) {
         const pokemonType = pokemon.types[0].type.name;
