@@ -31,3 +31,56 @@
   .normal {
     background-color: var(--normal-gray);
   }
+
+  .ice {
+    background-color: var(--ice-blue);
+  }
+
+  .fighting {
+    background-color: var(--fighting-red);
+  }
+  
+  .poison {
+    background-color: var(--poison-purple);
+  }
+
+  .ground {
+    background-color: var(--ground-brown);
+  }
+
+  .flying {
+    background-color: var(--flying-purple);
+  }
+  
+  .psychic {
+    background-color: var(--psychic-pink);
+  }
+
+  .bug {
+    background-color: var(--bug-green);
+  }
+  
+  .bug {
+    background-color: var(--bug-green);
+  }
+
+  .rock {
+    background-color: var( --rock-brown);
+  }
+
+  .dragon {
+    background-color: var(--dragon-purple);
+  }
+
+  .dark {
+    background-color: var(--dark-brown);
+  }
+
+  .steel {
+    background-color: var(--steel-gray);
+  }
+  
+  .fairy {
+    background-color: var(--fairy-pink);
+  }
+  

@@ -3,7 +3,7 @@ import './PokemonCard.css';
 
 export default function PokemonCard({ pokemon }) {
   const pokemonType = pokemon.types[0].type.name;
-  const image = pokemon.sprites.other.official_artwork.front_default;
+  const image = pokemon['sprites']['other']['official-artwork']['front_default'];
   let id = String(pokemon.id).padStart(3, '0');
 
   const renderPokemonType = (type) => (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Grid from '@material-ui/core/Grid';
 import { useState } from 'react';
 import PokemonCard from "../../components/Cards/PokemonCard/PokemonCard";
@@ -6,11 +6,15 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Data from '../../data/data.json';
 import './Home.css';
 import Layout from "../../components/Layout/Layout";
+import PokemonsStore from "../../store/pokemonsStore";
 
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
 
-    const renderPokemonCard = Data.filter((val) => {
+    const { pokemons, error, isPending, getAllPokemons } = useContext(PokemonsStore);
+
+    console.log(pokemons)
+    const renderPokemonCard = pokemons.filter((val) => {
         if (searchTerm === "") {
             return val;
         } else if (val.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
@@ -35,6 +39,7 @@ export default function Home() {
             <Grid container>
                 {renderPokemonCard}
             </Grid>
+            <button onClick={() => getAllPokemons()}>Load more</button>
         </Layout>
     );
 }

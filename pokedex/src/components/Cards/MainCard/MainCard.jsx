@@ -2,12 +2,12 @@ import React from "react";
 import './MainCard.css';
 
 export default function MainCard({ pokemon }) {
-    const image = pokemon.sprites.other.official_artwork.front_default;
+    const image = pokemon['sprites']['other']['official-artwork']['front_default'];
     let id = String(pokemon.id).padStart(3, '0');
     const pokemonType = pokemon.types[0].type.name;
 
     const renderPokemonType = (type) => (
-        <div className={`type ${type.type.name}`}>
+        <div key={type.slot} className={`type ${type.type.name}`}>
             <div className="pokemonTypeTitle">
                 {type.type.name}
             </div>
