@@ -3,7 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import { useState } from 'react';
 import PokemonCard from "../../components/Cards/PokemonCard/PokemonCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import Data from '../../data/data.json';
 import './Home.css';
 import Layout from "../../components/Layout/Layout";
 import PokemonsStore from "../../store/pokemonsStore";

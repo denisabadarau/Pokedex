@@ -1,7 +1,8 @@
 import React from "react";
 import './PowersCard.css';
 
-export default function PowersCard(pokemonType) {
+export default function PowersCard({ pokemon }) {
+    const pokemonType = pokemon?.types[0]?.type?.name;
     const powerLine = (title, width, color, number) => (
         <div className="powerLine">
             <div className="powerLineTitle">
@@ -16,13 +17,11 @@ export default function PowersCard(pokemonType) {
     );
 
     return (
-        <div className={`containerPowersCard ${pokemonType.pokemonType}`}>
-            {powerLine("HP", "95.3846px", "rgb(253, 250, 165)", "124")}
-            {powerLine("Attack", "53.0769px", "rgb(253, 250, 165)", "69")}
-            {powerLine("Defense", "180.154px", "rgb(171, 254, 163)", "255")}
-            {powerLine("Speed", "25.3846px", "rgb(253, 165, 164)", "33")}
-            {powerLine("Special Attack", "65.3846px", "rgb(253, 250, 165)", "85")}
-            {powerLine("Special Defense", "144.615px", "rgb(171, 254, 163)", "188")}
+        <div className={`containerPowersCard ${pokemonType}`}>
+            {
+                pokemon.stats.map(el => powerLine(el?.stat?.name, el?.base_stat, "rgb(253, 250, 165)", el?.base_stat))
+            }
+
         </div>
     );
 }
