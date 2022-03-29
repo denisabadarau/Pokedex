@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function usePokemonById(id) {
-    const [pokemon, setPokemon] = useState();
+function usePokemonSpeciesById(id) {
+    const [species, setSpecies] = useState();
     const [error, setError] = useState();
     const [pending, setIsPending] = useState(true);
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    const url = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
 
-    const getPokemon = async () => {
+    const getSpecies = async () => {
         try {
             const response = await axios.get(url);
-            setPokemon(response.data);
+            setSpecies(response.data);
             setIsPending(false);
         } catch (err) {
             setError(err);
@@ -19,10 +19,11 @@ function usePokemonById(id) {
     }
 
     useEffect(() => {
-        getPokemon();
+        getSpecies();
     }, [url]);
 
-    return { pokemon, error, pending };
+    return { species, error, pending };
+
 }
 
-export default usePokemonById;
+export default usePokemonSpeciesById;

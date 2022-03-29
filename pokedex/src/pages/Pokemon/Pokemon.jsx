@@ -9,24 +9,26 @@ import EvolutionsCard from "../../components/Cards/EvolutionsCard/EvolutionsCard
 import SpritesCard from "../../components/Cards/SpritesCard/SpritesCard";
 import ErrorPage from "../Error/Error";
 import usePokemonById from "../../hooks/usePokemonById";
+import usePokemonSpeciesById from "../../hooks/usePokemonSpeciesById";
 
 
 export default function Pokemon() {
     const pokemonId = Number(useParams().pokemonId);
-    const { pokemon, error, pendind } = usePokemonById(pokemonId);
-    console.log(pokemon);
-    //const pokemon = Data.find(el => el.id === pokemonId);
+    const { pokemon } = usePokemonById(pokemonId);
+    const { species } = usePokemonSpeciesById(pokemonId);
+    console.log(species)
+    console.log(pokemon)
 
     function renderPokemon(pokemon) {
         const pokemonType = pokemon.types[0].type.name;
         return (
             <Layout>
                 <div className="firstContainer">
-                    <MainCard pokemon={pokemon} />
+                    <MainCard pokemon={pokemon} species={species} />
                     <div className="descriptionContainer">
                         <h2>Description</h2>
                         <p>The diamond shape crystals on its body exper air as cold as -240 degrees Fahrenheit, surrounding its enemies and encasing them in ice</p>
-                        <PowersCard pokemonType={pokemonType} />
+                        <PowersCard pokemon={pokemon} />
                         <EvolutionsCard pokemonType={pokemonType} />
                     </div>
                 </div>

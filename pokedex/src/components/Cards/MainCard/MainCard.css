@@ -49,3 +49,21 @@
   .pokemonImageCard img {
     max-height: 400px;
   }
+
+  .footerMainCard {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    color: var(--black);
+  }
+
+  .detailsContainer {
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  .detailsContainerTitle {
+    font-weight: 500;
+  }

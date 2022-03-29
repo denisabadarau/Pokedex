@@ -30,7 +30,7 @@ export default function SpritesCard({ pokemon }) {
 
     var pokemonSpritesData = [];
     for (const sprite in filterSprites) {
-        if (sprite !== 'other') {
+        if (sprite !== 'other' && sprite !== 'versions') {
             pokemonSpritesData.push(spriteContainer(sprite, filterSprites[sprite]))
         }
     }
