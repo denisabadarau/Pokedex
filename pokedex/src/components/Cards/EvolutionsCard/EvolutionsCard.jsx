@@ -1,11 +1,10 @@
 import React from "react";
-import Data from '../../../data/data.json';
 import './EvolutionsCard.css';
 
-export default function EvolutionsCard(pokemonType) {
+export default function EvolutionsCard({ pokemonType, evolutions }) {
     const renderEvolution = (pokemon) => {
-        const id = String(pokemon.id).padStart(3, '0');
-        const image = pokemon.sprites.other.official_artwork.front_default;
+        const id = String(pokemon?.id).padStart(3, '0');
+        const image = pokemon?.sprites?.other?.['official-artwork']?.front_default;
 
         return (
             <a href={`/pokemon/${pokemon.id}`}>
@@ -24,12 +23,12 @@ export default function EvolutionsCard(pokemonType) {
         );
     }
 
-    return (
-        <div className={`containerEvolutionsCard ${pokemonType.pokemonType}`}>
-            {renderEvolution(Data[0])}
-            {renderEvolution(Data[1])}
-            {renderEvolution(Data[2])}
+    return evolutions.map((line) => (
+        <div className={`containerEvolutionsCard ${pokemonType}`}>
+            {
+                line.map((el) => renderEvolution(el))
+            }
         </div>
-    );
+    ));
 
 }
