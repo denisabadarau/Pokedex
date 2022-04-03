@@ -14,7 +14,7 @@ import axios from "axios";
 
 const getPokemonByName = (name) => axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
 
-const fetchEvolutionsChain = (el) => axios.get(el);
+const fetchEvolutionsChain = (chain) => axios.get(chain);
 
 const getEvolutions = async (chain) => {
     const allEvolutions = [];
@@ -67,21 +67,21 @@ export default function Pokemon() {
     const { species } = usePokemonSpeciesById(pokemonId);
     const descriptions = species?.flavor_text_entries.filter((el) => el?.language?.name === 'en');
     const [currentDesc, setCurrentDesc] = useState();
-    const [evolutions, setEvolutions] = useState();
+    const [evolutions, setEvolutions] = useState([]);
 
     useEffect(async () => {
+        //set the description
         if (species?.flavor_text_entries) {
             setCurrentDesc(descriptions?.[0]?.flavor_text);
         }
 
+        //set the evolution chain
         if (species?.evolution_chain?.url) {
             const chain = await fetchEvolutionsChain(species?.evolution_chain?.url);
             const allEvolutions = await getEvolutions(chain?.data.chain);
             setEvolutions(allEvolutions)
         }
     }, [species]);
-
-    console.log(evolutions);
 
     function renderPokemon(pokemon) {
         const pokemonType = pokemon.types[0].type.name;
@@ -104,6 +104,7 @@ export default function Pokemon() {
                     </div>
                 </div>
                 <div className="secondContainer">
+                    <EvolutionsCard pokemonType={pokemonType} evolutions={evolutions} />
                 </div>
                 <div className="secondContainer">
                     <SpritesCard pokemon={pokemon} />

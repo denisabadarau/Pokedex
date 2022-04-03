@@ -1,18 +1,11 @@
 import React from "react";
+import TypeCard from "../TypeCard/TypeCard";
 import './MainCard.css';
 
 export default function MainCard({ pokemon, species }) {
     const image = pokemon.sprites?.other?.['official-artwork']?.front_default;
     let id = String(pokemon.id).padStart(3, '0');
     const pokemonType = pokemon.types[0].type.name;
-
-    const renderPokemonType = (type) => (
-        <div key={type.slot} className={`type ${type.type.name}`}>
-            <div className="pokemonTypeTitle">
-                {type.type.name}
-            </div>
-        </div>
-    );
 
     function DetailsContainer({ detailsTitle, detailsContent }) {
         return (
@@ -38,7 +31,8 @@ export default function MainCard({ pokemon, species }) {
                     <h2>#{id}</h2>
                 </div>
                 <div className="types">
-                    {pokemon.types.map(renderPokemonType)}
+                    {pokemon.types.map((type) => <TypeCard type={type} />)}
+
                 </div>
             </div>
             <div className="pokemonImageCard">

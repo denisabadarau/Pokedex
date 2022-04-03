@@ -6,6 +6,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import './Home.css';
 import Layout from "../../components/Layout/Layout";
 import PokemonsStore from "../../store/pokemonsStore";
+import { Button } from "@chakra-ui/react";
 
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -38,7 +39,13 @@ export default function Home() {
             <Grid container>
                 {renderPokemonCard}
             </Grid>
-            <button onClick={() => getAllPokemons()}>Load more</button>
+            <Button
+                colorScheme='teal'
+                variant='outline'
+                onClick={() => getAllPokemons()}
+            >
+                Load more
+            </Button>
         </Layout>
     );
 }

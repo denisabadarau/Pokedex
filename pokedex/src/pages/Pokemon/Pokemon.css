@@ -8,12 +8,10 @@
 }
 
 .secondContainer {
-    align-items: center;
-    display: flex;
     justify-content: center;
     width: 100%;
     margin: 2%;
-
+    align-items: flex-start;
 }
 
 .descriptionContainer {
