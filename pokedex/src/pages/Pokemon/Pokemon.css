@@ -17,3 +17,24 @@
 .descriptionContainer {
     max-width: 500px;
 }
+
+.descriptionTitle {
+    font-size: 35px;
+}
+
+.selectLabel {
+    font-size: 20px;
+}
+
+.selectDescription {
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.currentDescriotionContainer {
+    margin: 5% 0 5% 0;
+}
+
+.pokemonAvatar {
+    background-color: var(--);
+}
