@@ -1,5 +1,6 @@
 import React from "react";
 import './EvolutionsCard.css';
+import TypeCard from "../TypeCard/TypeCard";
 
 export default function EvolutionsCard({ pokemonType, evolutions }) {
     const renderEvolution = (pokemon) => {
@@ -18,6 +19,9 @@ export default function EvolutionsCard({ pokemonType, evolutions }) {
                         </div>
                     </div>
                     <img src={image} alt="pokemon" />
+                    <div className="types">
+                        {pokemon.types.map((type) => <TypeCard type={type} />)}
+                    </div>
                 </div>
             </a>
         );

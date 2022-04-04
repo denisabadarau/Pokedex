@@ -3,12 +3,20 @@ import './PowersCard.css';
 
 export default function PowersCard({ pokemon }) {
     const pokemonType = pokemon?.types[0]?.type?.name;
-    const powerLine = (title, width, color, number) => (
+
+    function getColor(power) {
+        if (power <= 50) {
+            return "rgb(253, 250, 165)";
+        } else {
+            return "rgb(253, 165, 164)";
+        }
+    }
+    const powerLine = (title, width, number) => (
         <div className="powerLine">
             <div className="powerLineTitle">
-                {title}
+                {String(title).replaceAll('-', ' ')}
             </div>
-            <div className="powerLineBar" style={{ backgroundColor: color, width: width }}>
+            <div className="powerLineBar" style={{ backgroundColor: getColor(number), width: width }}>
             </div>
             <div className="powerLineNumber">
                 {number}
@@ -19,7 +27,7 @@ export default function PowersCard({ pokemon }) {
     return (
         <div className={`containerPowersCard ${pokemonType}`}>
             {
-                pokemon.stats.map(el => powerLine(el?.stat?.name, el?.base_stat, "rgb(253, 250, 165)", el?.base_stat))
+                pokemon.stats.map(el => powerLine(el?.stat?.name, el?.base_stat, el?.base_stat))
             }
 
         </div>

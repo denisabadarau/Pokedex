@@ -17,7 +17,7 @@ export default function SpritesCard({ pokemon }) {
 
         return (
             <div className="spriteContainer">
-                <div className="cardTitle">
+                <div className="spriteCardTitle">
                     {title}
                 </div>
                 <div className="spriteImage">
@@ -31,13 +31,12 @@ export default function SpritesCard({ pokemon }) {
     var pokemonSpritesData = [];
     for (const sprite in filterSprites) {
         if (sprite !== 'other' && sprite !== 'versions') {
-            pokemonSpritesData.push(spriteContainer(sprite, filterSprites[sprite]))
+            pokemonSpritesData.unshift(spriteContainer(sprite, filterSprites[sprite]))
         }
     }
 
     return (
         <div className={`containerSpritesCard ${pokemonType}`}>
-            <h1>Sprites</h1>
             <div className="sprites">
                 {pokemonSpritesData}
             </div>

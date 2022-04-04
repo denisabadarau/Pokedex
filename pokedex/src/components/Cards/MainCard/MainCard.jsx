@@ -9,7 +9,7 @@ export default function MainCard({ pokemon, species }) {
 
     function DetailsContainer({ detailsTitle, detailsContent }) {
         return (
-            <div className="detailsContainer">
+            <div className={`detailsContainer ${pokemonType}`}>
                 <div className="detailsContainerTitle">
                     {detailsTitle}
                 </div>
@@ -25,14 +25,15 @@ export default function MainCard({ pokemon, species }) {
         <div className={`containerMainCard ${pokemonType}`}>
             <div className="headerMainCard">
                 <div className="infoHeader">
-                    <div className="cardTitle">
-                        <h1>{pokemon.name}</h1>
+                    <div className="mainCardTitle">
+                        {pokemon.name}
                     </div>
-                    <h2>#{id}</h2>
+                    <div className="mainCardId">
+                        #{id}
+                    </div>
                 </div>
                 <div className="types">
                     {pokemon.types.map((type) => <TypeCard type={type} />)}
-
                 </div>
             </div>
             <div className="pokemonImageCard">
@@ -40,7 +41,7 @@ export default function MainCard({ pokemon, species }) {
             </div>
             <div className="footerMainCard">
                 <DetailsContainer detailsTitle="Weight" detailsContent={`${pokemon.weight / 10} kg`}></DetailsContainer>
-                <DetailsContainer detailsTitle="Height" detailsContent={`${pokemon.height / 10} meters`}></DetailsContainer>
+                <DetailsContainer detailsTitle="Height" detailsContent={`${pokemon.height / 10} m`}></DetailsContainer>
                 <DetailsContainer detailsTitle="Color" detailsContent={species?.color?.name}></DetailsContainer>
                 <DetailsContainer detailsTitle="Habitat" detailsContent={species?.habitat?.name}></DetailsContainer>
                 <DetailsContainer detailsTitle="Shape" detailsContent={species?.shape?.name}></DetailsContainer>

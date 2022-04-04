@@ -13,7 +13,6 @@ export default function Home() {
 
     const { pokemons, error, isPending, getAllPokemons } = useContext(PokemonsStore);
 
-    console.log(pokemons)
     const renderPokemonCard = pokemons.filter((val) => {
         if (searchTerm === "") {
             return val;

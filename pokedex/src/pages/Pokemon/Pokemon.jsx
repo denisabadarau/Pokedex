@@ -11,8 +11,15 @@ import usePokemonById from "../../hooks/usePokemonById";
 import usePokemonSpeciesById from "../../hooks/usePokemonSpeciesById";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Stack, Button, Avatar } from "@chakra-ui/react";
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
+import { ChakraProvider, Spinner } from '@chakra-ui/react';
+import { lazy, Suspense } from 'react';
+
 
 const getPokemonByName = (name) => axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+
+const getPokemonById = (id) => axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
 const fetchEvolutionsChain = (chain) => axios.get(chain);
 
@@ -68,6 +75,8 @@ export default function Pokemon() {
     const descriptions = species?.flavor_text_entries.filter((el) => el?.language?.name === 'en');
     const [currentDesc, setCurrentDesc] = useState();
     const [evolutions, setEvolutions] = useState([]);
+    const [previousPokemon, setPreviousPokemon] = useState();
+    const [nextPokemon, setNextPokemon] = useState();
 
     useEffect(async () => {
         //set the description
@@ -83,29 +92,72 @@ export default function Pokemon() {
         }
     }, [species]);
 
+    useEffect(async () => {
+        if (pokemonId > 1) {
+            const prevProkemon = await getPokemonById(pokemonId - 1);
+            setPreviousPokemon(prevProkemon.data);
+            const nextPoke = await getPokemonById(pokemonId + 1);
+            setNextPokemon(nextPoke.data);
+        } else {
+            const nextPoke = await getPokemonById(pokemonId + 1);
+            setNextPokemon(nextPoke.data);
+        }
+    }, [pokemon])
+
     function renderPokemon(pokemon) {
         const pokemonType = pokemon.types[0].type.name;
         return (
             <Layout>
+                <Stack direction='row' spacing={800}>
+                    {previousPokemon &&
+                        <a href={`/pokemon/${previousPokemon?.id}`}>
+                            <Button leftIcon={<ArrowBackIcon />} colorScheme='teal' variant='ghost' size='lg'>
+                                <Suspense fallback={<Spinner size="xs" />}>
+                                    <Avatar
+                                        bg='#fff7e8'
+                                        size='md'
+                                        src={previousPokemon?.['sprites']['other']['official-artwork']['front_default']}
+                                    />
+                                </Suspense>
+                            </Button>
+                        </a>
+                    }
+                    <a href={`/pokemon/${nextPokemon?.id}`}>
+                        <Button rightIcon={<ArrowForwardIcon />} colorScheme='teal' variant='ghost' size='lg'>
+                            <Suspense fallback={<Spinner size="xs" />}>
+                                <Avatar
+                                    bg='#fff7e8'
+                                    size='md'
+                                    src={nextPokemon?.['sprites']['other']['official-artwork']['front_default']} />
+                            </Suspense>
+
+                        </Button>
+                    </a>
+                </Stack>
                 <div className="firstContainer">
                     <MainCard pokemon={pokemon} species={species} />
                     <div className="descriptionContainer">
-                        <h2>Description</h2>
-                        <label>Game: </label>
-                        <select onChange={(ev) => setCurrentDesc(ev.target.value)}>
+                        <div className="descriptionTitle">
+                            Description
+                        </div>
+                        <label className="selectLabel">Game: </label>
+                        <select className="selectDescription" onChange={(ev) => setCurrentDesc(ev.target.value)}>
                             {
-                                descriptions?.map((el) => (
-                                    <option value={el?.flavor_text}>{el?.version?.name}</option>
-                                ))
+                                descriptions?.map((el) => <option value={el?.flavor_text}>{el?.version?.name}</option>)
                             }
                         </select>
-                        <p>{currentDesc}</p>
+                        <div className="currentDescriotionContainer">
+                            <p>{currentDesc}</p>
+                        </div>
+                        <div class="descriptionTitle">Stats</div>
                         <PowersCard pokemon={pokemon} />
                     </div>
                 </div>
+                <div className="descriptionTitle">Evolutions</div>
                 <div className="secondContainer">
                     <EvolutionsCard pokemonType={pokemonType} evolutions={evolutions} />
                 </div>
+                <div className="descriptionTitle">Sprites</div>
                 <div className="secondContainer">
                     <SpritesCard pokemon={pokemon} />
                 </div>

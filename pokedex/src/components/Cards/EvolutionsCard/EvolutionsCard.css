@@ -6,12 +6,13 @@
     display: flex;
     padding: 5px 0;
     width: 100%;
-    margin-top: 10px;
+    margin-bottom: 15px;
     align-items: center;
     display: flex;
     flex-direction: row;
-    height: 150px;
+    min-height: 300px;
     justify-content: space-around;
+    box-shadow: 5px 5px 5px #bfbe9c;
 }
 
 .evolutionContainer {
@@ -29,5 +30,11 @@
 }
 
 .evolutionContainer img {
-    height: 80px;
+    max-height: 150px;
+}
+
+.evolutionName {
+    font-size: 25px;
+    font-weight: 550;
+    text-transform: capitalize;
 }

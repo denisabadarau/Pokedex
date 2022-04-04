@@ -2,68 +2,82 @@
 @import '../../../shared/shared.css';
 
 .containerMainCard {
-    align-items: center;
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 20px;
-    min-width: 535px;
-    padding: 3%;
-    border-radius: 3%;
+  align-items: center;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  min-width: 535px;
+  padding: 3%;
+  border-radius: 3%;
+  box-shadow: 10px 10px 5px #BFBE9C;
 }
 
 .headerMainCard {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .type {
-    border-radius: 5px;
-    color: var(--white);
-    filter: brightness(.9);
-    margin-bottom: 10px;
-    text-align: center;
-    width: 80px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-    padding: 10px;
-  }
-  
-  .pokemonTypeTitle {
-    text-transform: capitalize;
-  }
+  border-radius: 5px;
+  color: var(--white);
+  filter: brightness(.9);
+  margin-bottom: 10px;
+  text-align: center;
+  width: 80px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+}
 
-  .types {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  
-  .pokemonImageCard img {
-    max-height: 400px;
-  }
+.pokemonTypeTitle {
+  text-transform: capitalize;
+}
 
-  .footerMainCard {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    justify-content: center;
-    color: var(--black);
-  }
+.types {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  .detailsContainer {
-    padding: 10px;
-    font-size: 20px;
-  }
+.pokemonImageCard img {
+  max-height: 400px;
+}
 
-  .detailsContainerTitle {
-    font-weight: 500;
-  }
+.footerMainCard {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  color: var(--black);
+}
+
+.detailsContainer {
+  font-size: 17px;
+  filter: brightness(.9);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #bfbe9c;
+}
+
+.detailsContainerTitle {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.mainCardTitle {
+  font-size: 40px;
+  text-transform: capitalize
+}
+
+.mainCardId {
+  font-size: 25px;
+}
