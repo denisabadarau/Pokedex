@@ -1,22 +1,24 @@
 import React from "react";
 import './PowersCard.css';
+import { Progress } from '@chakra-ui/react';
 
 export default function PowersCard({ pokemon }) {
     const pokemonType = pokemon?.types[0]?.type?.name;
 
     function getColor(power) {
         if (power <= 50) {
-            return "rgb(253, 250, 165)";
+            return "red";
         } else {
-            return "rgb(253, 165, 164)";
+            return "yellow";
         }
     }
-    const powerLine = (title, width, number) => (
+    const powerLine = (title, number) => (
         <div className="powerLine">
             <div className="powerLineTitle">
                 {String(title).replaceAll('-', ' ')}
             </div>
-            <div className="powerLineBar" style={{ backgroundColor: getColor(number), width: width }}>
+            <div className="powerLineBar">
+                <Progress hasStripe value={number} size="lg" colorScheme={getColor(number)} />
             </div>
             <div className="powerLineNumber">
                 {number}
@@ -27,9 +29,8 @@ export default function PowersCard({ pokemon }) {
     return (
         <div className={`containerPowersCard ${pokemonType}`}>
             {
-                pokemon.stats.map(el => powerLine(el?.stat?.name, el?.base_stat, el?.base_stat))
+                pokemon.stats.map(el => powerLine(el?.stat?.name, el?.base_stat))
             }
-
         </div>
     );
 }
