@@ -31,12 +31,6 @@
 
 .powerLineBar {
     align-self: center;
-    border-radius: 10px;
-    display: inline-block;
-    grid-column-end: 2;
-    grid-column-start: 1;
-    height: 8px;
-    justify-self: start;
 }
 
 .powerLineNumber {
