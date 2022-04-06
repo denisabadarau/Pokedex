@@ -1,21 +1,18 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import { useParams } from 'react-router-dom';
 import MainCard from "../../components/Cards/MainCard/MainCard";
-import './Pokemon.css';
 import PowersCard from "../../components/Cards/PowersCard/PowersCard";
 import EvolutionsCard from "../../components/Cards/EvolutionsCard/EvolutionsCard";
 import SpritesCard from "../../components/Cards/SpritesCard/SpritesCard";
 import ErrorPage from "../Error/Error";
 import usePokemonById from "../../hooks/usePokemonById";
 import usePokemonSpeciesById from "../../hooks/usePokemonSpeciesById";
-import { useState, useEffect } from "react";
 import axios from "axios";
-import { Stack, Button, Avatar } from "@chakra-ui/react";
+import { Stack, Button, Image } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
-import { ChakraProvider, Spinner } from '@chakra-ui/react';
-import { lazy, Suspense } from 'react';
-
+import egg from '../../images/egg.png';
+import './Pokemon.css';
 
 const getPokemonByName = (name) => axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
 
@@ -67,7 +64,6 @@ const getEvolutions = async (chain) => {
     return allEvolutions;
 }
 
-
 export default function Pokemon() {
     const pokemonId = Number(useParams().pokemonId);
     const { pokemon } = usePokemonById(pokemonId);
@@ -93,44 +89,54 @@ export default function Pokemon() {
     }, [species]);
 
     useEffect(async () => {
-        if (pokemonId > 1) {
-            const prevProkemon = await getPokemonById(pokemonId - 1);
-            setPreviousPokemon(prevProkemon.data);
-            const nextPoke = await getPokemonById(pokemonId + 1);
-            setNextPokemon(nextPoke.data);
+        let prevPoke = [];
+        let nextPoke = [];
+
+        if (pokemonId === 1) {
+            prevPoke = await getPokemonById(898);
+            nextPoke = await getPokemonById(pokemonId + 1);
+        } else if (pokemonId === 898) {
+            prevPoke = await getPokemonById(pokemonId - 1);
+            nextPoke = await getPokemonById(1);
         } else {
-            const nextPoke = await getPokemonById(pokemonId + 1);
-            setNextPokemon(nextPoke.data);
+            prevPoke = await getPokemonById(pokemonId - 1);
+            nextPoke = await getPokemonById(pokemonId + 1);
         }
+        setPreviousPokemon(prevPoke.data);
+        setNextPokemon(nextPoke.data);
     }, [pokemon])
+
+    if (pokemonId < 1 || pokemonId > 898) {
+        return <ErrorPage />;
+    }
+
+    console.log(descriptions)
 
     function renderPokemon(pokemon) {
         const pokemonType = pokemon.types[0].type.name;
         return (
             <Layout>
                 <Stack direction='row' spacing={800}>
-                    {previousPokemon &&
-                        <a href={`/pokemon/${previousPokemon?.id}`}>
-                            <Button leftIcon={<ArrowBackIcon />} colorScheme='teal' variant='ghost' size='lg'>
-                                <Suspense fallback={<Spinner size="xs" />}>
-                                    <Avatar
-                                        bg='#fff7e8'
-                                        size='md'
-                                        src={previousPokemon?.['sprites']['other']['official-artwork']['front_default']}
-                                    />
-                                </Suspense>
-                            </Button>
-                        </a>
-                    }
+                    <a href={`/pokemon/${previousPokemon?.id}`}>
+                        <Button leftIcon={<ArrowBackIcon />} colorScheme='teal' variant='ghost' size='lg'>
+                            <Image
+                                borderRadius='full'
+                                boxSize='48px'
+                                src={previousPokemon?.['sprites']['other']['official-artwork']['front_default']}
+                                alt='Dan Abramov'
+                                fallbackSrc={egg}
+                            />
+                        </Button>
+                    </a>
                     <a href={`/pokemon/${nextPokemon?.id}`}>
                         <Button rightIcon={<ArrowForwardIcon />} colorScheme='teal' variant='ghost' size='lg'>
-                            <Suspense fallback={<Spinner size="xs" />}>
-                                <Avatar
-                                    bg='#fff7e8'
-                                    size='md'
-                                    src={nextPokemon?.['sprites']['other']['official-artwork']['front_default']} />
-                            </Suspense>
-
+                            <Image
+                                borderRadius='full'
+                                boxSize='48px'
+                                src={nextPokemon?.['sprites']['other']['official-artwork']['front_default']}
+                                alt='Dan Abramov'
+                                fallbackSrc={egg}
+                            />
                         </Button>
                     </a>
                 </Stack>
@@ -167,6 +173,5 @@ export default function Pokemon() {
 
     return <div>
         {pokemon && renderPokemon(pokemon)}
-        {!!!pokemon && <ErrorPage />}
     </div>
 }

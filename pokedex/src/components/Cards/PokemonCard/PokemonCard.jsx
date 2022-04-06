@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import TypeCard from "../TypeCard/TypeCard";
 import { Box } from '@chakra-ui/react';
 import { motion, useAnimation } from 'framer-motion';
+import { Image } from '@chakra-ui/react';
 import './PokemonCard.css';
+import egg from '../../../images/egg.png';
 
 const MotionBox = motion(Box);
 
@@ -36,7 +38,6 @@ export default function PokemonCard({ pokemon }) {
       cardAnimation.stop();
       cardAnimation.set(cardVariants.init);
     }
-
   }, [animateCard])
 
   return (
@@ -54,10 +55,16 @@ export default function PokemonCard({ pokemon }) {
       </div>
       <div className="cardBody">
         <div className="pokemonTypeContainer">
-          {pokemon.types.map((type) => <TypeCard type={type} />)}
+          {pokemon.types.map((type) => <TypeCard type={type} key={type.slot} />)}
         </div>
         <div className="pokemonImage">
-          <img src={image} alt="pokemon" />
+          <Image
+            boxSize='143px'
+            objectFit='cover'
+            src={image}
+            alt="pokemon"
+            fallbackSrc={egg}
+          />
         </div>
       </div>
     </MotionBox>

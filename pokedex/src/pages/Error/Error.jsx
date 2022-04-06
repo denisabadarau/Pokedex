@@ -1,8 +1,7 @@
 import React from "react";
-import './Error.css';
 import Error from '../../images/Error.png';
-import '../../shared/shared.css';
 import Layout from "../../components/Layout/Layout";
+import './Error.css';
 
 export default function ErrorPage() {
     return (

@@ -1,6 +1,8 @@
 import React from "react";
 import './EvolutionsCard.css';
 import TypeCard from "../TypeCard/TypeCard";
+import egg from '../../../images/egg.png';
+import { Image } from '@chakra-ui/react';
 
 export default function EvolutionsCard({ pokemonType, evolutions }) {
     const renderEvolution = (pokemon) => {
@@ -18,7 +20,13 @@ export default function EvolutionsCard({ pokemonType, evolutions }) {
                             #{id}
                         </div>
                     </div>
-                    <img src={image} alt="pokemon" />
+                    <Image
+                        boxSize='150px'
+                        objectFit='cover'
+                        src={image}
+                        alt="pokemon"
+                        fallbackSrc={egg}
+                    />
                     <div className="types">
                         {pokemon.types.map((type) => <TypeCard type={type} />)}
                     </div>
@@ -34,5 +42,4 @@ export default function EvolutionsCard({ pokemonType, evolutions }) {
             }
         </div>
     ));
-
 }

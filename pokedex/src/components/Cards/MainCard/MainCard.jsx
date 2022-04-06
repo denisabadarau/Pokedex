@@ -1,6 +1,9 @@
 import React from "react";
 import TypeCard from "../TypeCard/TypeCard";
 import './MainCard.css';
+import egg from '../../../images/egg.png';
+import { Image } from '@chakra-ui/react';
+
 
 export default function MainCard({ pokemon, species }) {
     const image = pokemon.sprites?.other?.['official-artwork']?.front_default;
@@ -33,11 +36,17 @@ export default function MainCard({ pokemon, species }) {
                     </div>
                 </div>
                 <div className="types">
-                    {pokemon.types.map((type) => <TypeCard type={type} />)}
+                    {pokemon.types.map((type) => <TypeCard type={type} key={type.slot} />)}
                 </div>
             </div>
             <div className="pokemonImageCard">
-                <img src={image} alt="pokemon" />
+                <Image
+                    boxSize='400px'
+                    objectFit='cover'
+                    src={image}
+                    alt="pokemon"
+                    fallbackSrc={egg}
+                />
             </div>
             <div className="footerMainCard">
                 <DetailsContainer detailsTitle="Weight" detailsContent={`${pokemon.weight / 10} kg`}></DetailsContainer>
