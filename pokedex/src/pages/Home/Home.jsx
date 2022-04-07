@@ -1,10 +1,12 @@
 import { React, useContext, useState } from "react";
-import Grid from '@material-ui/core/Grid';
+import PokemonsStore from "../../store/pokemonsStore";
+
 import PokemonCard from "../../components/Cards/PokemonCard/PokemonCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import Layout from "../../components/Layout/Layout";
-import PokemonsStore from "../../store/pokemonsStore";
+
 import { Button } from "@chakra-ui/react";
+import Grid from '@material-ui/core/Grid';
+
 import './Home.css';
 
 export default function Home() {
@@ -27,7 +29,7 @@ export default function Home() {
     ));
 
     return (
-        <Layout>
+        <>
             <SearchBar
                 placeholder="Search pokemon name..."
                 handleChange={(event) => {
@@ -44,6 +46,6 @@ export default function Home() {
             >
                 Load more
             </Button>
-        </Layout>
+        </>
     );
 }

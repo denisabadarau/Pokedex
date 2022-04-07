@@ -1,8 +1,11 @@
 import React from "react";
+
 import TypeCard from "../TypeCard/TypeCard";
-import './MainCard.css';
 import egg from '../../../images/egg.png';
+
 import { Image } from '@chakra-ui/react';
+
+import './MainCard.css';
 
 
 export default function MainCard({ pokemon, species }) {

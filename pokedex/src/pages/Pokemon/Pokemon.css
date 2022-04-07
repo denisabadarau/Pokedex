@@ -38,3 +38,13 @@
 .pokemonAvatar {
     background-color: var(--);
 }
+
+@media (max-width: 1000px) {
+    .firstContainer {
+        display: block;
+    }
+
+    .descriptionContainer {
+        margin-left: 25%;
+    }
+}

@@ -1,5 +1,3 @@
-@import '../../shared/shared.css';
-
 .Layout {
     align-items: flex-start;
     background-color: var(--background);
@@ -11,7 +9,7 @@
 }
 
 .LayoutContainer {
-    width: 1080px;
+    max-width: 1080px;
 }
 
 .LayoutHeader {
@@ -29,4 +27,14 @@
 
 .title {
     color: var(--title);
+}
+
+@media (max-width: 1000px) {
+    .Layout {
+        width: 100%;
+    }
+
+    .LayoutContainer {
+        width: 100%;
+    }
 }

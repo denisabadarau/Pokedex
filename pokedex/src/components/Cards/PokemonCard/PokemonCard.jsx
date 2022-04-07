@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+
 import TypeCard from "../TypeCard/TypeCard";
 import { Box } from '@chakra-ui/react';
 import { motion, useAnimation } from 'framer-motion';
 import { Image } from '@chakra-ui/react';
+
 import './PokemonCard.css';
 import egg from '../../../images/egg.png';
 

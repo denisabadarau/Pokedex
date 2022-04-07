@@ -1,5 +1,4 @@
-import React from "react";
-import { createContext } from "react";
+import { React, createContext } from "react";
 import useFetch from "../hooks/useFetch";
 
 const PokemonsStore = createContext({})

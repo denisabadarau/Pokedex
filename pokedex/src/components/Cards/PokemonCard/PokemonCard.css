@@ -35,4 +35,5 @@
 
 .cardTitle {
   font-size: 30px;
+  text-transform: capitalize;
 }
